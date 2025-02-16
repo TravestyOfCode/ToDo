@@ -1,6 +1,6 @@
 ﻿namespace ToDo.Data;
 
-public class ToDoListEntity
+internal class ToDoListEntity
 {
     public int Id { get; set; }
 
