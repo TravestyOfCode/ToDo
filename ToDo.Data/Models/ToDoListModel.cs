@@ -9,4 +9,22 @@ public class ToDoListModel
     public bool IsCompleted { get; set; }
 
     public List<ToDoItemModel>? Items { get; set; }
+
+    internal static ToDoListModel FromEntity(ToDoListEntity entity)
+    {
+        return new ToDoListModel()
+        {
+            Id = entity.Id,
+            Title = entity.Title,
+            IsCompleted = entity.IsCompleted,
+            Items = entity.Items?.Select(p => new ToDoItemModel()
+            {
+                Description = p.Description,
+                DueBy = p.DueBy,
+                Id = p.Id,
+                IsCompleted = p.IsCompleted,
+                ToDoListId = p.ToDoListId
+            }).ToList()
+        };
+    }
 }
