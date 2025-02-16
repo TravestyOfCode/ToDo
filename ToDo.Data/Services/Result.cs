@@ -29,6 +29,7 @@ public class Result<T> : Result
 
     }
 
+    public static implicit operator Result<T>(T value) => new Result<T>() { StatusCode = 200, Value = value };
     public static implicit operator Result<T>(BadRequestResult result) => new Result<T> { StatusCode = 400 };
     public static implicit operator Result<T>(NotFoundResult result) => new Result<T> { StatusCode = 404 };
     public static implicit operator Result<T>(ForbiddenResult result) => new Result<T> { StatusCode = 403 };
