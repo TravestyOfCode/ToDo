@@ -11,4 +11,16 @@ public class ToDoItemModel
     public required string Description { get; set; }
 
     public DateOnly? DueBy { get; set; }
+
+    internal static ToDoItemModel FromEntity(ToDoItemEntity entity)
+    {
+        return new ToDoItemModel()
+        {
+            Description = entity.Description,
+            DueBy = entity.DueBy,
+            Id = entity.Id,
+            IsCompleted = entity.IsCompleted,
+            ToDoListId = entity.ToDoListId
+        };
+    }
 }
