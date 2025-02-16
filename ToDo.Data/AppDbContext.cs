@@ -8,6 +8,9 @@ namespace ToDo.Data;
 
 internal class AppDbContext : IdentityDbContext<AppUser>
 {
+    public DbSet<ToDoListEntity> ToDoLists { get; set; }
+    public DbSet<ToDoItemEntity> ToDoItems { get; set; }
+
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
