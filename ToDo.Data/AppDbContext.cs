@@ -28,9 +28,10 @@ internal class AppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
 
         var config = configBuilder.Build();
 
-        var oBuilder = new DbContextOptionsBuilder<AppDbContext>();
+        var connString = config.GetConnectionString("Default") ?? throw new ArgumentNullException("Unable to get connection string.");
 
-        oBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+        var oBuilder = new DbContextOptionsBuilder<AppDbContext>()
+            .UseSqlServer(connString);
 
         return new AppDbContext(oBuilder.Options);
     }
