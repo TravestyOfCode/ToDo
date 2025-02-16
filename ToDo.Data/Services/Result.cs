@@ -14,6 +14,7 @@ public class Result
         StatusCode = statusCode;
     }
 
+    public static Result Ok() => new Result(200);
     public static BadRequestResult BadRequest() => new BadRequestResult();
     public static NotFoundResult NotFound() => new NotFoundResult();
     public static ForbiddenResult Forbidden() => new ForbiddenResult();
