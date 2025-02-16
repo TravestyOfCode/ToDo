@@ -6,7 +6,7 @@ namespace ToDo.Data.Services;
 
 public static class DataSetupService
 {
-    public static IServiceCollection AddDataServices(IServiceCollection services, string connectionString)
+    public static IServiceCollection AddDataServices(this IServiceCollection services, string connectionString)
     {
         services.AddDbContext<AppDbContext>(o => o.UseSqlServer(connectionString));
 
