@@ -32,6 +32,7 @@ internal class GetToDoListByIdHandler : IRequestHandler<GetToDoListById, Result<
                     Id = p.Id,
                     IsCompleted = p.IsCompleted,
                     Title = p.Title,
+                    UserId = p.UserId,
                     Items = p.Items!.Select(i => new ToDoItemModel()
                     {
                         Id = i.Id,
