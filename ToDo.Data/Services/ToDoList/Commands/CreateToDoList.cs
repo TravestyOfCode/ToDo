@@ -5,6 +5,8 @@ namespace ToDo.Data.Services.ToDoList.Commands;
 
 public class CreateToDoList : IRequest<Result<ToDoListModel>>
 {
+    public required string UserId { get; set; }
+
     public required string Title { get; set; }
 
     public bool IsCompleted { get; set; }
@@ -28,6 +30,7 @@ internal class CreateToDoListHandler : IRequestHandler<CreateToDoList, Result<To
         {
             var entity = _dbContext.ToDoLists.Add(new ToDoListEntity()
             {
+                UserId = request.UserId,
                 Title = request.Title,
                 IsCompleted = request.IsCompleted
             });
