@@ -24,3 +24,30 @@ public class ToDoItemModel
         };
     }
 }
+
+internal static class ToDoItemModelExtensions
+{
+    public static IQueryable<ToDoItemModel> ProjectToModel(this IQueryable<ToDoItemEntity> source)
+    {
+        return source.Select(p => new ToDoItemModel()
+        {
+            Description = p.Description,
+            DueBy = p.DueBy,
+            Id = p.Id,
+            IsCompleted = p.IsCompleted,
+            ToDoListId = p.ToDoListId
+        });
+    }
+
+    public static List<ToDoItemModel> ToModelList(this IEnumerable<ToDoItemEntity> source)
+    {
+        return source.Select(p => new ToDoItemModel()
+        {
+            Description = p.Description,
+            DueBy = p.DueBy,
+            Id = p.Id,
+            IsCompleted = p.IsCompleted,
+            ToDoListId = p.ToDoListId
+        }).ToList();
+    }
+}
